@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
@@ -38,8 +38,13 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a + b > b + c) {
+    if (a > b) return a;
+    return b;
+  }
+  if (b > c) return b;
+  return c;
 }
 
 /**
@@ -60,8 +65,51 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  let j = queen.y;
+  for (let i = queen.x; i <= 8; i += 1) {
+    if (i === king.x && j === king.y) return true;
+    j += 1;
+  }
+
+  j = queen.y;
+  for (let i = queen.x; i <= 8; i += 1) {
+    if (i === king.x && j === king.y) return true;
+    j -= 1;
+  }
+
+  j = queen.y;
+  for (let i = queen.x; i >= 0; i -= 1) {
+    if (i === king.x && j === king.y) return true;
+    j += 1;
+  }
+
+  j = queen.y;
+  for (let i = queen.x; i >= 0; i -= 1) {
+    if (i === king.x && j === king.y) return true;
+    j -= 1;
+  }
+
+  j = queen.y;
+  for (let i = queen.x; i <= 8; i += 1) {
+    if (i === king.x && j === king.y) return true;
+  }
+
+  for (let i = queen.x; i >= 0; i -= 1) {
+    if (i === king.x && j === king.y) return true;
+  }
+
+  const i = queen.x;
+
+  for (let jj = queen.y; jj <= 8; jj += 1) {
+    if (i === king.x && jj === king.y) return true;
+  }
+
+  for (let jj = queen.y; jj >= 0; jj -= 1) {
+    if (i === king.x && jj === king.y) return true;
+  }
+
+  return false;
 }
 
 /**
