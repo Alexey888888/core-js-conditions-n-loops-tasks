@@ -130,8 +130,11 @@ function canQueenCaptureKing(queen, king) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a + b > c && a + c > b && b + c > a) {
+    if (a === b || b === c || a === c) return true;
+  }
+  return false;
 }
 
 /**
@@ -148,8 +151,48 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let res = '';
+  let currentNum = num;
+  const romNum = ['X', 'IX', 'V', 'IV', 'I'];
+  const arabicNum = [10, 9, 5, 4, 1];
+
+  while (currentNum > 0) {
+    if (currentNum - arabicNum[0] >= 0) {
+      currentNum -= arabicNum[0];
+      res += romNum[0];
+    } else break;
+  }
+
+  while (currentNum > 0) {
+    if (currentNum - arabicNum[1] >= 0) {
+      currentNum -= arabicNum[1];
+      res += romNum[1];
+    } else break;
+  }
+
+  while (currentNum > 0) {
+    if (currentNum - arabicNum[2] >= 0) {
+      currentNum -= arabicNum[2];
+      res += romNum[2];
+    } else break;
+  }
+
+  while (currentNum > 0) {
+    if (currentNum - arabicNum[3] >= 0) {
+      currentNum -= arabicNum[3];
+      res += romNum[3];
+    } else break;
+  }
+
+  while (currentNum > 0) {
+    if (currentNum - arabicNum[4] >= 0) {
+      currentNum -= arabicNum[4];
+      res += romNum[4];
+    } else break;
+  }
+
+  return res;
 }
 
 /**
