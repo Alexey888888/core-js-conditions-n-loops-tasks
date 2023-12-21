@@ -376,8 +376,84 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const arr = [];
+  let count = 0;
+  let ii = 0;
+  let jj = size - 1;
+  let iiHorizontalReverse = size - 1;
+  let jjVerticalReverse = 0;
+  arr.length = size;
+  for (let i = 0; i < size; i += 1) {
+    arr[i] = [];
+    arr[i].length = size;
+  }
+  for (let i = 0; i < size; i += 1) {
+    for (let j = 0; j < size; j += 1) {
+      arr[i][j] = 0;
+    }
+  }
+
+  function horizontalFill() {
+    for (let j = 0; j < size; j += 1) {
+      const i = ii;
+      if (arr[i][j] === 0) {
+        count += 1;
+        arr[i][j] = count;
+      }
+      if (count === size ** 2) return arr;
+    }
+    ii += 1;
+    return ii;
+  }
+
+  function verticalFill() {
+    for (let i = 0; i < size; i += 1) {
+      const j = jj;
+      if (arr[i][j] === 0) {
+        count += 1;
+        arr[i][j] = count;
+      }
+      if (count === size ** 2) return arr;
+    }
+    jj -= 1;
+    return jj;
+  }
+
+  function horizontalReverseFill() {
+    const i = iiHorizontalReverse;
+    for (let j = size; j >= 0; j -= 1) {
+      if (arr[i][j] === 0) {
+        count += 1;
+        arr[i][j] = count;
+      }
+      if (count === size ** 2) return arr;
+    }
+    iiHorizontalReverse -= 1;
+    return iiHorizontalReverse;
+  }
+
+  function verticalReverseFill() {
+    const j = jjVerticalReverse;
+    for (let i = size - 1; i >= 0; i -= 1) {
+      if (arr[i][j] === 0) {
+        count += 1;
+        arr[i][j] = count;
+      }
+      if (count === size ** 2) return arr;
+    }
+    jjVerticalReverse += 1;
+    return jjVerticalReverse;
+  }
+
+  while (count !== size ** 2) {
+    horizontalFill();
+    verticalFill();
+    horizontalReverseFill();
+    verticalReverseFill();
+  }
+
+  return arr;
 }
 
 /**
