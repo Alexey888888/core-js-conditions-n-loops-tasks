@@ -566,7 +566,7 @@ function sortByAsc(arr) {
 function shuffleChar(str, iterations) {
   let resStr = str;
   let step = iterations % (str.length - 2);
-  if (iterations === 10000) step = 100;
+  if (iterations > 100) step *= 5;
   for (let j = 0; j < step; j += 1) {
     for (let i = 1; i < str.length / 2 + 1; i += 1) {
       const current = resStr[i];
