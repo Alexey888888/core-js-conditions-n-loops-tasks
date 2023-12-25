@@ -565,20 +565,21 @@ function sortByAsc(arr) {
  */
 function shuffleChar(str, iterations) {
   let step = iterations;
-  let resStr = '';
+  let resStr = str;
   let tempStrOdd = '';
   let tempStrEven = '';
-  for (let j = 0; j < str.length; j += 1) {
-    if (j % 2) {
-      tempStrOdd += str[j];
-    } else tempStrEven += str[j];
+  while (step !== 0) {
+    tempStrOdd = '';
+    tempStrEven = '';
+    for (let i = 0; i < str.length; i += 1) {
+      if (i % 2) {
+        tempStrOdd += resStr[i];
+      } else tempStrEven += resStr[i];
+    }
+    resStr = tempStrEven + tempStrOdd;
+    step -= 1;
   }
-  resStr = tempStrEven + tempStrOdd;
-  step -= 1;
-  if (step === 0) {
-    return resStr;
-  }
-  return shuffleChar(resStr, step);
+  return resStr;
 }
 
 /**
