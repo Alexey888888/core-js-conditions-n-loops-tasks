@@ -607,19 +607,35 @@ function getNearestBigger(number) {
   }
   const tempI = numberString[lastI];
   const tempJ = numberString[j];
-  numberString =
-    numberString.substring(0, lastI) +
-    tempJ +
-    numberString.substring(lastI + 1, j) +
-    tempI +
-    numberString.substring(j + 1);
-  const rightFromI = numberString.substring(lastI + 1);
+  const arr1 = [];
+  for (let i1 = 0; i1 < lastI; i1 += 1) {
+    arr1[i1] = numberString[i1];
+  }
+  const arr2 = [];
+  let ii2 = 0;
+  for (let i2 = lastI + 1; i2 < j; i2 += 1) {
+    arr2[ii2] = numberString[i2];
+    ii2 += 1;
+  }
+  const arr3 = [];
+  let ii3 = 0;
+  for (let i3 = j + 1; i3 < numberString.length; i3 += 1) {
+    arr3[ii3] = numberString[i3];
+    ii3 += 1;
+  }
+  numberString = arr1.join('') + tempJ + arr2.join('') + tempI + arr3.join('');
   const rightFromIArr = [];
-  for (let ii = 0; ii < rightFromI.length; ii += 1) {
-    rightFromIArr[ii] = rightFromI[ii];
+  let ii1 = 0;
+  for (let ii = lastI + 1; ii < numberString.length; ii += 1) {
+    rightFromIArr[ii1] = numberString[ii];
+    ii1 += 1;
   }
   rightFromIArr.sort((a, b) => a - b);
-  numberString = numberString.substring(0, lastI + 1) + rightFromIArr.join('');
+  const leftArr = [];
+  for (let iii = 0; iii < lastI + 1; iii += 1) {
+    leftArr[iii] = numberString[iii];
+  }
+  numberString = leftArr.join('') + rightFromIArr.join('');
   return +numberString;
 }
 
