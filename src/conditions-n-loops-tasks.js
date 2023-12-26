@@ -595,7 +595,7 @@ function shuffleChar(str, iterations) {
  * @returns {number} The nearest larger number, or original number if none exists.
  */
 function getNearestBigger(number) {
-  let numberString = number.toString();
+  let numberString = String(number);
   let lastI = numberString.length - 2;
   while (lastI >= 0 && numberString[lastI] >= numberString[lastI + 1]) {
     lastI -= 1;
