@@ -610,16 +610,16 @@ function getNearestBigger(number) {
   numberString =
     numberString.substring(0, lastI) +
     tempJ +
-    numberString.substring(lastI, j - 1) +
+    numberString.substring(lastI + 1, j) +
     tempI +
     numberString.substring(j + 1);
-  const rightFromI = numberString.substring(j);
+  const rightFromI = numberString.substring(lastI + 1);
   const rightFromIArr = [];
   for (let ii = 0; ii < rightFromI.length; ii += 1) {
     rightFromIArr[ii] = rightFromI[ii];
   }
   rightFromIArr.sort((a, b) => a - b);
-  numberString = numberString.substring(0, j) + rightFromIArr.join('');
+  numberString = numberString.substring(0, lastI + 1) + rightFromIArr.join('');
   return +numberString;
 }
 
