@@ -213,52 +213,53 @@ function convertToRomanNumerals(num) {
 function convertNumberToString(numberStr) {
   let res = '';
   let finalRes = '';
-  const setNumbers = [
-    'zero',
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-    'point',
-    'minus',
-    'point',
-  ];
-  const numbers = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '.',
-    '-',
-    ',',
-  ];
   for (let i = 0; i < numberStr.length; i += 1) {
-    for (let j = 0; j < numbers.length; j += 1) {
-      if (numberStr[i] === numbers[j]) {
-        res += `${setNumbers[j]} `;
-      }
+    switch (numberStr[i]) {
+      case '0':
+        res += `zero `;
+        break;
+      case '1':
+        res += `one `;
+        break;
+      case '2':
+        res += `two `;
+        break;
+      case '3':
+        res += `three `;
+        break;
+      case '4':
+        res += `four `;
+        break;
+      case '5':
+        res += `five `;
+        break;
+      case '6':
+        res += `six `;
+        break;
+      case '7':
+        res += `seven `;
+        break;
+      case '8':
+        res += `eight `;
+        break;
+      case '9':
+        res += `nine `;
+        break;
+      case '.':
+        res += `point `;
+        break;
+      case '-':
+        res += `minus `;
+        break;
+      case ',':
+        res += `point `;
+        break;
+      default:
+        break;
     }
   }
-  switch (res[res.length - 1]) {
-    case ' ':
-      for (let i = 0; i < res.length - 1; i += 1) {
-        finalRes += res[i];
-      }
-      break;
-    default: {
-      return finalRes;
-    }
+  for (let i = 0; i < res.length - 1; i += 1) {
+    finalRes += res[i];
   }
   return finalRes;
 }
